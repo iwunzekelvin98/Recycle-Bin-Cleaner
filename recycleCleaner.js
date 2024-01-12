@@ -1,28 +1,15 @@
-//We need th eprimary module to access the File system on our computer
-const fs = require('fs');
+const readUserInput = require("readline");
 
-function cleanRecycleBin() {
+const userInterface = readUserInput.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+
+function getUserName() {
+    userInterface.question("Please Enter your name: \n", (name) => {
+    console.log("\nHi", name, "Would you like you free up some storage today?");
+     userInterface.close();
+});
     
-    const recycleBinPath = 'C:\\$Recycle.Bin'
-
-    //Read the contents of recyle Bin
-    fs.readdir(recycleBinPath, (error, files) => {
-        if (error) {
-            console.log("Error Reading directory");
-        }
-        else {
-            console.log('Files in Recycle Bin:', files);
-        }
-    }
-
-
-    //Print out content if recyle Bin
-
-    //Delete file
-
-    //Delete conformation
-
-    console.log("Your file has been successfulliy deleted")
 }
-
-cleanRecycleBin();
+getUserName();
